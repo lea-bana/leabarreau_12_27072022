@@ -1,25 +1,24 @@
-import logo from "./logo.svg";
 import "./style/App.css";
+import Header from "./components/header";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
     </div>
   );
 }
 
 export default App;
+/*<Navbar />
+        
+          <Routes>
+            <Route exact path="/" element={<Home />}/>
+            <Route path="/sport-see" element={<Home />}/>
+            <Route path="/user/:id" element={<Dashboard />} />
+            <Route path="/sport-see/user/:id" element={<Dashboard />} />
+            <Route path="/*" element={<Error />}/>
+            <Route path="sport-see/*" element={<Error />}/>
+            <Route path="/user/*" element={<Error />}/>
+            <Route path="/sport-see/user/*" element={<Error />}/>
+          </Routes>*/
