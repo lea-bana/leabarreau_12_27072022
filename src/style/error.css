@@ -1,0 +1,36 @@
+.error404 {
+  text-align: center;
+}
+
+.error404 h2 {
+  font-weight: 700;
+  font-size: 7em;
+  margin-bottom: 0em;
+}
+
+.error404 h3 {
+  font-weight: 500;
+  font-size: 2em;
+  margin-bottom: 3em;
+}
+
+.errorpage > a {
+  text-decoration: underline;
+  display: flex;
+  justify-content: center;
+  color: black;
+  font-size: 1.2em;
+}
+
+.errorpage > a:hover {
+  color: black;
+}
+
+.errorpage {
+  margin-top: 8em;
+  height: 500px;
+  margin-bottom: 6em;
+  position: relative;
+  top: 3em;
+  left: 7em;
+}

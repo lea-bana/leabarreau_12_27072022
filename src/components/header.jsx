@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "../style/header.css";
 
 /**
- * @return an horizontal navbar with links.
+ * @returns an horizontal navbar with links.
  * @component Header
  */
 
@@ -17,13 +17,13 @@ function Header() {
         <Link to="/" className="pad-right">
           Accueil
         </Link>
-        <Link to="/*" className="pad-right">
+        <Link to="/" className="pad-right">
           Profil
         </Link>
         <Link to="/*" className="pad-right">
           Réglage
         </Link>
-        <Link to="/*" className="pad-right last">
+        <Link to="/" className="pad-right last">
           Communauté
         </Link>
       </div>
