@@ -1,0 +1,70 @@
+.custom-tooltip {
+  background: #e60000;
+  padding: 0 10px;
+  box-shadow: 0px 0px 4px rgb(0, 0, 0);
+}
+
+.value {
+  display: block;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 500;
+  font-family: Roboto;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.activity-chart-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 2em;
+}
+
+.act-title {
+  display: flex;
+  align-items: center;
+  width: 95%;
+  justify-content: space-between;
+}
+
+.activity-chart-title-two ul {
+  display: flex;
+  justify-content: space-between;
+  gap: 26px;
+}
+
+.activity-chart-title-two {
+  display: flex;
+}
+
+.activity-chart {
+  background: rgb(251, 251, 251);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  height: 90%;
+  width: 70%;
+  max-width: 60em;
+}
+
+.recharts-wrapper {
+  margin-right: -5em;
+}
+
+li {
+  list-style: none;
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+}
+.width-li-red {
+  color: red;
+  font-size: x-large;
+}
+.width-li-black {
+  color: black;
+  font-size: x-large;
+}

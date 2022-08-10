@@ -1,4 +1,5 @@
 import Hello from "../components/hello";
+import Navbar from "../components/navbar";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
@@ -7,7 +8,11 @@ import {
   USER_MAIN_DATA,
   USER_PERFORMANCE,
 } from "../services/mockeddatas";
-import { apiCall, newUserData } from "../hooks/apiCall";
+import "../style/dashboard.css";
+import { UseAxios, newUserData } from "../hooks/useAxios";
+import UserCounts from "../components/graphs/userCounts";
+import ActivityBarChart from "../components/graphs/activityBarChart";
+import "../style/graph.css";
 
 function Dashboard() {
   // Get current id from url
@@ -37,7 +42,7 @@ function Dashboard() {
     }
 
     async function getData() {
-      await apiCall(userId);
+      await UseAxios(userId);
       setDatas(() => ({ ...newUserData }));
 
       if (
@@ -61,9 +66,12 @@ function Dashboard() {
     return <Link to="/*" />;
   } else {
     return (
-      <div className="profile-page">
+      <div className="dashboard-page">
+        <Navbar />
         <Hello datas={datas} />
         <div className="graph">
+          <ActivityBarChart datas={datas} />
+          <UserCounts datas={datas} />
           <div className="graph-bottom"></div>
         </div>
       </div>

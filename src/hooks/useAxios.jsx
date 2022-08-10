@@ -17,7 +17,7 @@ export let newUserData = {};
  *
  */
 
-export const apiCall = async (userid) => {
+export const UseAxios = async (userid) => {
   const main = axios.get(`http://localhost:3000/user/${userid}`);
   const activity = axios.get(`http://localhost:3000/user/${userid}/activity`);
   const sessions = axios.get(

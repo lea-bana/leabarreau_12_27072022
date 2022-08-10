@@ -1,0 +1,58 @@
+.boxIcon {
+  display: flex;
+  border-radius: 5px;
+  background: #fbfbfb;
+  padding: 1em;
+  width: 10em;
+  align-items: center;
+  justify-content: space-between;
+}
+.boxIcon img {
+  background-color: coral;
+  padding: 1em;
+  border-radius: 6px;
+}
+
+.boxInfos {
+  margin: 0em 1em;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.boxinfos p {
+  font-size: 0.8em;
+  font-weight: 400;
+  line-height: 0em;
+  margin-top: 0em;
+}
+
+.p-box {
+  margin-left: 0em;
+  margin-bottom: 0.8em;
+  color: #74798c;
+  font-size: small;
+}
+.userCountBoxes {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+@media screen and (max-width: 1270px) {
+  .userCountBoxes {
+    flex-direction: row;
+    gap: 1rem;
+    width: 900px;
+    max-width: 95%;
+  }
+
+  .boxinfos {
+    margin: 0em 1em;
+    font-size: 0.8em;
+    font-weight: 700;
+  }
+}

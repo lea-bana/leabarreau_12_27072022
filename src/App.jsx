@@ -1,6 +1,5 @@
 import "./style/app.css";
 import Header from "./components/header";
-import Navbar from "./components/navbar";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/home";
 import Dashboard from "./pages/dashboard";
@@ -10,8 +9,6 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Navbar />
-
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/sport-see" element={<Home />} />

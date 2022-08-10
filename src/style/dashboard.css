@@ -1,0 +1,8 @@
+.dashboard-page {
+  position: relative;
+  top: 2em;
+  left: 5%;
+  margin: auto;
+  width: 100%;
+  max-width: 1200px;
+}

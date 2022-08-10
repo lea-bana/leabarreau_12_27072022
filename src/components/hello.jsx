@@ -6,13 +6,12 @@
  * @component Welcome
  */
 
-//const firstName = USER_MAIN_DATA.userInfos.firstName;
-
 function Hello({ datas }) {
+  let userFirstName = datas.user?.userInfos.firstName;
   return (
     <div className="hello-user">
       <h1>
-        Bonjour <span className="red">{datas.user?.userInfos.firstName}</span>
+        Bonjour <span style={{ color: "red" }}>{userFirstName}</span>
       </h1>
       <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
     </div>
