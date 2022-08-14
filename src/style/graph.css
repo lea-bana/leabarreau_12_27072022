@@ -3,3 +3,79 @@
   justify-content: space-between;
   align-content: center;
 }
+.radarChart {
+  background-color: #282d30;
+  border-radius: 5px;
+}
+
+.black {
+  color: black;
+}
+
+.red {
+  color: #e60000;
+}
+
+.text-activity {
+  color: #74798c;
+  font-size: 1em;
+}
+
+.width-li {
+  font-size: 2em;
+  padding-right: 0.3em;
+}
+
+li {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  padding-right: 1em;
+  padding-left: 1.4em;
+}
+
+.radar {
+  width: 280px;
+  height: 280px;
+  margin: 0px auto;
+  border-radius: 5px;
+  background-color: rgb(40, 45, 48);
+}
+
+/*.graph {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1.5fr repeat(3, 1fr);
+  grid-template-areas:
+      "activity-chart activity-chart activity-chart intake-box"
+      "activity-chart activity-chart activity-chart intake-box"
+      "activity-chart activity-chart activity-chart intake-box"
+      "activity-chart activity-chart activity-chart intake-box"
+      "graph-bottom graph-bottom graph-bottom intake-box"
+      "graph-bottom graph-bottom graph-bottom intake-box"
+      "graph-bottom graph-bottom graph-bottom intake-box"
+      "graph-bottom graph-bottom graph-bottom intake-box";
+  grid-area: ch / ch / ch / ch;
+  gap: 2rem;
+}*/
+
+.graph-bottom {
+  grid-area: graph-bottom / graph-bottom / graph-bottom / graph-bottom;
+  display: flex;
+  align-items: flex-end;
+}
+
+@media screen and (max-width: 1270px) {
+  .graph-bottom {
+    -webkit-box-align: center;
+    align-items: center;
+    width: 880px;
+    max-width: 95%;
+  }
+
+  .graph {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

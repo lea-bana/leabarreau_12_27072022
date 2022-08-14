@@ -13,6 +13,10 @@ import { UseAxios, newUserData } from "../hooks/useAxios";
 import UserCounts from "../components/graphs/userCounts";
 import ActivityBarChart from "../components/graphs/activityBarChart";
 import "../style/graph.css";
+import RadarChartPerf from "../components/graphs/radarChart";
+import "../style/sessionsLineChart.css";
+import SessionsLineChart from "../components/graphs/sessionsLineChart";
+import PieChartScore from "../components/graphs/pieChartScore";
 
 function Dashboard() {
   // Get current id from url
@@ -21,6 +25,7 @@ function Dashboard() {
   const userId = Number(id);
   const [datas, setDatas] = useState({});
   const [noDatas, setNoDatas] = useState({});
+  console.log(userId);
 
   useEffect(() => {
     let newUserDataMock;
@@ -42,8 +47,11 @@ function Dashboard() {
     }
 
     async function getData() {
+      console.log("1");
       await UseAxios(userId);
+      console.log("2");
       setDatas(() => ({ ...newUserData }));
+      console.log("3");
 
       if (
         !newUserData.user ||
@@ -69,10 +77,16 @@ function Dashboard() {
       <div className="dashboard-page">
         <Navbar />
         <Hello datas={datas} />
-        <div className="graph">
-          <ActivityBarChart datas={datas} />
-          <UserCounts datas={datas} />
-          <div className="graph-bottom"></div>
+        <div className="graphs">
+          <div className="graph">
+            <ActivityBarChart datas={datas} />
+            <UserCounts datas={datas} />
+          </div>
+          <div className="graph-bottom">
+            <SessionsLineChart datas={datas} />
+            <RadarChartPerf datas={datas} />
+            <PieChartScore datas={datas} />
+          </div>
         </div>
       </div>
     );

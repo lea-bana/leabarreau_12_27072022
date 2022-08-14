@@ -18,16 +18,19 @@ export let newUserData = {};
  */
 
 export const UseAxios = async (userid) => {
-  const main = axios.get(`http://localhost:3000/user/${userid}`);
-  const activity = axios.get(`http://localhost:3000/user/${userid}/activity`);
-  const sessions = axios.get(
+  console.log("dans useAxios");
+  const main = await axios.get(`http://localhost:3000/user/${userid}`);
+  const activity = await axios.get(
+    `http://localhost:3000/user/${userid}/activity`
+  );
+  const sessions = await axios.get(
     `http://localhost:3000/user/${userid}/average-sessions`
   );
-  const performance = axios.get(
+  const performance = await axios.get(
     `http://localhost:3000/user/${userid}/performance`
   );
 
-  axios
+  await axios
     .all([main, activity, sessions, performance])
     .then(
       axios.spread((...responses) => {
