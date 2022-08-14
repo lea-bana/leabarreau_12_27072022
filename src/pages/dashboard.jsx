@@ -1,6 +1,6 @@
 import Hello from "../components/hello";
 import Navbar from "../components/navbar";
-import { Link, useParams } from "react-router-dom";
+import { createPath, Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
   USER_ACTIVITY,
@@ -9,7 +9,7 @@ import {
   USER_PERFORMANCE,
 } from "../services/mockeddatas";
 import "../style/dashboard.css";
-import { UseAxios, newUserData } from "../hooks/useAxios";
+//import { UseAxios, newUserData } from "../hooks/useAxios";
 import UserCounts from "../components/graphs/userCounts";
 import ActivityBarChart from "../components/graphs/activityBarChart";
 import "../style/graph.css";
@@ -17,17 +17,24 @@ import RadarChartPerf from "../components/graphs/radarChart";
 import "../style/sessionsLineChart.css";
 import SessionsLineChart from "../components/graphs/sessionsLineChart";
 import PieChartScore from "../components/graphs/pieChartScore";
+import { UseAxiosII } from "../hooks/useAxiosII";
 
 function Dashboard() {
   // Get current id from url
   const { id } = useParams();
   // Muting type from string into number on id
   const userId = Number(id);
-  const [datas, setDatas] = useState({});
+  const [datas, setDatas] = useState();
   const [noDatas, setNoDatas] = useState({});
   console.log(userId);
 
+  const fetchData = async (userId) => {
+    const users = await UseAxiosII(userId);
+    setDatas(users);
+  };
+
   useEffect(() => {
+    fetchData(userId).catch(console.error);
     let newUserDataMock;
 
     if (userId === 12) {
@@ -45,39 +52,17 @@ function Dashboard() {
         performance: USER_PERFORMANCE[1],
       };
     }
+  }, [fetchData]);
 
-    async function getData() {
-      console.log("1");
-      await UseAxios(userId);
-      console.log("2");
-      setDatas(() => ({ ...newUserData }));
-      console.log("3");
-
-      if (
-        !newUserData.user ||
-        newUserData == null ||
-        newUserData === undefined ||
-        newUserData.length === 0
-      ) {
-        setDatas(() => ({ ...newUserDataMock }));
-
-        if (newUserDataMock === undefined) {
-          setNoDatas(true);
-        }
-      }
-    }
-
-    getData();
-  }, [userId]);
-
-  if (noDatas === true) {
-    return <Link to="/*" />;
+  if (datas === "undefined") {
+    return <div> Loading...</div>;
   } else {
+    console.log("dansle else", datas);
     return (
       <div className="dashboard-page">
         <Navbar />
-        <Hello datas={datas} />
-        <div className="graphs">
+        {datas.info && <Hello datas={datas} />}
+        {/* <div className="graphs">
           <div className="graph">
             <ActivityBarChart datas={datas} />
             <UserCounts datas={datas} />
@@ -87,7 +72,7 @@ function Dashboard() {
             <RadarChartPerf datas={datas} />
             <PieChartScore datas={datas} />
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }

@@ -7,7 +7,9 @@
  */
 
 function Hello({ datas }) {
-  let userFirstName = datas.user?.userInfos.firstName;
+  console.log(datas);
+  let userFirstName = "";
+  console.log(userFirstName);
   return (
     <div className="hello-user">
       <h1>
