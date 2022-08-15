@@ -3,20 +3,24 @@
   border-radius: 5px;
   background: #fbfbfb;
   padding: 1em;
-  width: 10em;
+  width: 250px;
   align-items: center;
+  height: 120px;
   justify-content: space-between;
 }
+
 .boxIcon img {
-  background-color: coral;
-  padding: 1em;
+  padding: 25px;
   border-radius: 6px;
+  width: 25px;
+  height: 25px;
 }
 
 .boxInfos {
-  margin: 0em 1em;
-  font-size: 1.2em;
+  margin: 1em 2em;
+  font-size: 1.5em;
   display: flex;
+  font-weight: 550;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -39,7 +43,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
-  gap: 20px;
+  gap: 32px;
 }
 
 @media screen and (max-width: 1270px) {

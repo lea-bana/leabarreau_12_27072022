@@ -81,11 +81,11 @@ function Dashboard() {
           <div className="graph">
             <ActivityBarChart datas={datas} />
             <UserCounts datas={datas} />
-          </div>
-          <div className="graph-bottom">
-            <SessionsLineChart datas={datas} />
-            <RadarChartPerf datas={datas} />
-            <PieChartScore datas={datas} />
+            <div className="graph-bottom">
+              <SessionsLineChart datas={datas} />
+              <RadarChartPerf datas={datas} />
+              <PieChartScore datas={datas} />
+            </div>
           </div>
         </div>
       </div>

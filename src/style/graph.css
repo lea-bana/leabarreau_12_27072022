@@ -2,6 +2,9 @@
   display: flex;
   justify-content: space-between;
   align-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
 }
 .radarChart {
   background-color: #282d30;
@@ -37,32 +40,16 @@ li {
 .radar {
   width: 280px;
   height: 280px;
-  margin: 0px auto;
   border-radius: 5px;
   background-color: rgb(40, 45, 48);
 }
 
-/*.graph {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1.5fr repeat(3, 1fr);
-  grid-template-areas:
-      "activity-chart activity-chart activity-chart intake-box"
-      "activity-chart activity-chart activity-chart intake-box"
-      "activity-chart activity-chart activity-chart intake-box"
-      "activity-chart activity-chart activity-chart intake-box"
-      "graph-bottom graph-bottom graph-bottom intake-box"
-      "graph-bottom graph-bottom graph-bottom intake-box"
-      "graph-bottom graph-bottom graph-bottom intake-box"
-      "graph-bottom graph-bottom graph-bottom intake-box";
-  grid-area: ch / ch / ch / ch;
-  gap: 2rem;
-}*/
-
 .graph-bottom {
-  grid-area: graph-bottom / graph-bottom / graph-bottom / graph-bottom;
+  margin-top: -23.4%;
+  width: 73%;
   display: flex;
-  align-items: flex-end;
+  align-content: center;
+  justify-content: space-between;
 }
 
 @media screen and (max-width: 1270px) {
