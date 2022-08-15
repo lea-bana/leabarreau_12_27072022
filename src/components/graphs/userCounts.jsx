@@ -6,8 +6,8 @@ import "../../style/userCounts.css";
 import PropTypes from "prop-types";
 
 /**
- * Function that return 4 boxes with icons and nutritional informations (cal, protein, lipid and carb).
- * @returns {reactElement} the IntakeCount component
+ * Function returns 4 boxes with icons and nutritional informations (cal, protein, lipid and carb).
+ * @returns {reactElement} the UserCounts component
  * @param {object} datas
  * @property {!Number} datas.calorieCount - number of calories
  * @property {!Number} datas.proteinCount - number of proteins

@@ -18,6 +18,31 @@ import "../style/sessionsLineChart.css";
 import SessionsLineChart from "../components/graphs/sessionsLineChart";
 import PieChartScore from "../components/graphs/pieChartScore";
 
+/** Render the dashboard.
+ *
+ * The userId is defined with the number in the url.
+ *
+ * If the userId is 12, then the data is fetched from the index [0] of USER_MAIN_DATA, USER_ACTIVITY,
+ * USER_AVERAGE_SESSIONS, USER_PERFORMANCE mock.
+ *
+ * If the userId is 18, then the data is fetched from the index [1] of USER_MAIN_DATA, USER_ACTIVITY,
+ * USER_AVERAGE_SESSIONS, USER_PERFORMANCE mock.
+ *
+ * First, the data is fetched from the API.
+ * If the data is not fetched from the API, then we take the mocked datas from the index [0 or 1].
+ *
+ * If no datas is returned then the user is redirected to the error page.
+ *
+ * @returns graphs components with the props datas (ActivityBarChart, UserCounts, SessionsLineChart,
+ *  RadarChart and pieChartScore).
+ * @param {string} id
+ * @param {number} userId
+ * @param {object} datas
+ * @param {object} noDatas
+ * @param {object} newUserDataMock
+ * @param {object} newUserData
+ */
+
 function Dashboard() {
   // Get current id from url
   const { id } = useParams();

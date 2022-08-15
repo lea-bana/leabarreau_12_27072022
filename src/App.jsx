@@ -5,6 +5,12 @@ import Home from "./pages/home";
 import Dashboard from "./pages/dashboard";
 import Error from "./pages/error";
 
+/**
+ * The App function returns a div with all the components and Routes
+ * @returns router component.
+ * @returns {reactElement}
+ */
+
 function App() {
   return (
     <div className="App">

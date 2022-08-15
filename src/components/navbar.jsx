@@ -4,6 +4,11 @@ import pool from "../assets/pool.png";
 import cycle from "../assets/cycle.png";
 import "../style/navbar.css";
 
+/**
+ * @returns an vertical navbar with icons.
+ * @component Navbar
+ */
+
 function Navbar() {
   return (
     <div className="navbar-vertical">

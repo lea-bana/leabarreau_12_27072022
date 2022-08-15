@@ -13,7 +13,7 @@ export let newUserData = {};
  * @returns {Promises}
  * @returns {Object} newUserData = {[user, activity, sessions, performance]};
  * or
- * @returns errors via console.log??
+ * @returns errors via console.log
  *
  */
 
