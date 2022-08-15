@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "../style/home.css";
 
 /**
- * Home is a functionnal component that returns 2 buttons for choose a profile user
+ * Home is a functionnal component, returns 2 buttons for choose a profile user
  * @return a welcome user page to connect an account.
  * @component Home
  */
