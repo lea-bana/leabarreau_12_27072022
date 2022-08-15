@@ -1,4 +1,4 @@
-<p  text-align ="center">
+<p align ="center">
   <img src="/src/assets/logo.png" width="500px"alt="logo"/>
 </p>
 
@@ -44,7 +44,7 @@ Created with React App and Recharts.
 
 ### Step 1 : Installing and launching back-end
 
-- Clone the back-end repository : `git clone https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard.git`
+- Clone the back-end repository : `git clone https://github.com/lea-bana/P9-front-end-dashboard.git`
 - Install dependencies: `yarn install`
 - Launch back-end on port 3000 (default port): `yarn dev`
 
