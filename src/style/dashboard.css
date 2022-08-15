@@ -6,3 +6,9 @@
   width: 100%;
   max-width: 1200px;
 }
+
+@media screen and (max-width: 1270px) {
+  .dashboard-page {
+    left: 14%;
+  }
+}

@@ -68,3 +68,13 @@ li {
   color: black;
   font-size: x-large;
 }
+
+@media screen and (max-width: 1270px) {
+  .recharts-wrapper {
+    width: 810px;
+    height: 300px;
+  }
+  .activity-chart {
+    width: 78%;
+  }
+}

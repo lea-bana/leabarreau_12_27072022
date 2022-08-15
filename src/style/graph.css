@@ -56,13 +56,16 @@ li {
   .graph-bottom {
     -webkit-box-align: center;
     align-items: center;
-    width: 880px;
-    max-width: 95%;
+    width: 82%;
+    margin-top: -10px;
   }
 
   .graph {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 4rem;
+    align-content: space-between;
+    justify-content: flex-start;
   }
 }
