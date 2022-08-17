@@ -20,10 +20,9 @@ function SessionsLineChart({ datas }) {
   const initialDayWeek = ["L", "M", "M", "J", "V", "S", "D"];
   const [averageTime, setAverageTime] = useState([]);
   useEffect(() => {
-    console.log("This is datas", datas);
     if (datas?.sessions) {
       setAverageTime(...averageTime, datas.sessions.sessions);
-      console.log("this is averagetime after setter", averageTime);
+      //console.log("this is averagetime after setter", averageTime);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [datas]);
@@ -33,7 +32,6 @@ function SessionsLineChart({ datas }) {
       sessionLength: element.sessionLength,
     };
   });
-  console.log("Heyhey", data);
 
   /**
    * Function that customizes the tooltip component with the sessionlength value.

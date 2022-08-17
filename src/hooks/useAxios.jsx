@@ -18,7 +18,6 @@ export let newUserData = {};
  */
 
 export const UseAxios = async (userid) => {
-  console.log("dans useAxios");
   const main = await axios.get(`http://localhost:3000/user/${userid}`);
   const activity = await axios.get(
     `http://localhost:3000/user/${userid}/activity`
@@ -44,4 +43,3 @@ export const UseAxios = async (userid) => {
       console.log("Fetch error:", errors);
     });
 };
-console.log(newUserData);

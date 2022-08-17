@@ -50,7 +50,6 @@ function Dashboard() {
   const userId = Number(id);
   const [datas, setDatas] = useState({});
   const [noDatas, setNoDatas] = useState({});
-  console.log(userId);
 
   useEffect(() => {
     let newUserDataMock;
@@ -72,11 +71,9 @@ function Dashboard() {
     }
 
     async function getData() {
-      console.log("1");
       await UseAxios(userId);
-      console.log("2");
+
       setDatas(() => ({ ...newUserData }));
-      console.log("3");
 
       if (
         !newUserData.user ||

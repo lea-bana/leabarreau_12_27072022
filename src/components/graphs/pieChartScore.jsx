@@ -25,13 +25,12 @@ function PieChartScore({ datas }) {
       setTodayScore(datas.user?.todayScore * 100);
     }
   }, [datas]);
-  console.log(datas);
 
   const data = [
     { total: Number(todayScore) },
     { total: 100 - Number(todayScore) },
   ];
-  console.log(data);
+
   /**
    * Function that customizes the Legend component with the todayScore value.
    * @param {Array} payload [0] (Number) score value
