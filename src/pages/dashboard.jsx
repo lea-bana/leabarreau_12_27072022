@@ -73,19 +73,20 @@ function Dashboard() {
     async function getData() {
       await UseAxios(userId);
 
-      setDatas(() => ({ ...newUserData }));
-
       if (
         !newUserData.user ||
         newUserData == null ||
         newUserData === undefined ||
         newUserData.length === 0
       ) {
-        setDatas(() => ({ ...newUserDataMock }));
-
         if (newUserDataMock === undefined) {
           setNoDatas(true);
+          return;
         }
+        setDatas(() => ({ ...newUserDataMock }));
+        console.log("this is data mock", newUserDataMock);
+      } else {
+        setDatas(() => ({ ...newUserData }));
       }
     }
 

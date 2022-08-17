@@ -18,28 +18,35 @@ export let newUserData = {};
  */
 
 export const UseAxios = async (userid) => {
-  const main = await axios.get(`http://localhost:3000/user/${userid}`);
-  const activity = await axios.get(
-    `http://localhost:3000/user/${userid}/activity`
-  );
-  const sessions = await axios.get(
-    `http://localhost:3000/user/${userid}/average-sessions`
-  );
-  const performance = await axios.get(
-    `http://localhost:3000/user/${userid}/performance`
-  );
+  try {
+    const main = await axios.get(`http://localhost:3000/user/${userid}`);
+    const activity = await axios.get(
+      `http://localhost:3000/user/${userid}/activity`
+    );
+    const sessions = await axios.get(
+      `http://localhost:3000/user/${userid}/average-sessions`
+    );
+    const performance = await axios.get(
+      `http://localhost:3000/user/${userid}/performance`
+    );
 
-  await axios
-    .all([main, activity, sessions, performance])
-    .then(
-      axios.spread((...responses) => {
-        newUserData.user = responses[0].data.data;
-        newUserData.activity = responses[1].data.data;
-        newUserData.sessions = responses[2].data.data;
-        newUserData.performance = responses[3].data.data;
-      })
-    )
-    .catch((errors) => {
-      console.log("Fetch error:", errors);
-    });
+    await axios
+      .all([main, activity, sessions, performance])
+      .then(
+        axios.spread((...responses) => {
+          newUserData.user = responses[0].data.data;
+          newUserData.activity = responses[1].data.data;
+          newUserData.sessions = responses[2].data.data;
+          newUserData.performance = responses[3].data.data;
+        })
+      )
+      .catch((errors) => {
+        console.log("Fetch error:", errors);
+      });
+  } catch (e) {
+    if (e.status === "404") {
+      newUserData = undefined;
+      return newUserData;
+    }
+  }
 };
