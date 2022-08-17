@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/dashboard.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/dashboard.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import Hello from "../components/hello";
+import Navbar from "../components/navbar";
+import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import {
+  USER_ACTIVITY,
+  USER_AVERAGE_SESSIONS,
+  USER_MAIN_DATA,
+  USER_PERFORMANCE,
+} from "../services/mockeddatas";
+import "../style/dashboard.css";
+import { UseAxios, newUserData } from "../hooks/useAxios";
+import UserCounts from "../components/graphs/userCounts";
+import ActivityBarChart from "../components/graphs/activityBarChart";
+import "../style/graph.css";
+import RadarChartPerf from "../components/graphs/radarChart";
+import "../style/sessionsLineChart.css";
+import SessionsLineChart from "../components/graphs/sessionsLineChart";
+import PieChartScore from "../components/graphs/pieChartScore";
+
+/** Render the dashboard.
+ *
+ * The userId is defined with the number in the url.
+ *
+ * If the userId is 12, then the data is fetched from the index [0] of USER_MAIN_DATA, USER_ACTIVITY,
+ * USER_AVERAGE_SESSIONS, USER_PERFORMANCE mock.
+ *
+ * If the userId is 18, then the data is fetched from the index [1] of USER_MAIN_DATA, USER_ACTIVITY,
+ * USER_AVERAGE_SESSIONS, USER_PERFORMANCE mock.
+ *
+ * First, the data is fetched from the API.
+ * If the data is not fetched from the API, then we take the mocked datas from the index [0 or 1].
+ *
+ * If no datas is returned then the user is redirected to the error page.
+ *
+ * @returns graphs components with the props datas (ActivityBarChart, UserCounts, SessionsLineChart,
+ *  RadarChart and pieChartScore).
+ * @param {string} id
+ * @param {number} userId
+ * @param {object} datas
+ * @param {object} noDatas
+ * @param {object} newUserDataMock
+ * @param {object} newUserData
+ */
+
+function Dashboard() {
+  // Get current id from url
+  const { id } = useParams();
+  // Muting type from string into number on id
+  const userId = Number(id);
+  const [datas, setDatas] = useState({});
+  const [noDatas, setNoDatas] = useState({});
+  console.log(userId);
+
+  useEffect(() => {
+    let newUserDataMock;
+
+    if (userId === 12) {
+      newUserDataMock = {
+        user: USER_MAIN_DATA[0],
+        activity: USER_ACTIVITY[0],
+        session: USER_AVERAGE_SESSIONS[0],
+        performance: USER_PERFORMANCE[0],
+      };
+    } else if (userId === 18) {
+      newUserDataMock = {
+        user: USER_MAIN_DATA[1],
+        activity: USER_ACTIVITY[1],
+        session: USER_AVERAGE_SESSIONS[1],
+        performance: USER_PERFORMANCE[1],
+      };
+    }
+
+    async function getData() {
+      console.log("1");
+      await UseAxios(userId);
+      console.log("2");
+      setDatas(() => ({ ...newUserData }));
+      console.log("3");
+
+      if (
+        !newUserData.user ||
+        newUserData == null ||
+        newUserData === undefined ||
+        newUserData.length === 0
+      ) {
+        setDatas(() => ({ ...newUserDataMock }));
+
+        if (newUserDataMock === undefined) {
+          setNoDatas(true);
+        }
+      }
+    }
+
+    getData();
+  }, [userId]);
+
+  if (noDatas === true) {
+    return &lt;Link to="/*" />;
+  } else {
+    return (
+      &lt;div className="dashboard-page">
+        &lt;Navbar />
+        &lt;Hello datas={datas} />
+        &lt;div className="graphs">
+          &lt;div className="graph">
+            &lt;ActivityBarChart datas={datas} />
+            &lt;UserCounts datas={datas} />
+            &lt;div className="graph-bottom">
+              &lt;SessionsLineChart datas={datas} />
+              &lt;RadarChartPerf datas={datas} />
+              &lt;PieChartScore datas={datas} />
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+    );
+  }
+}
+
+export default Dashboard;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#ActivityBarChart">ActivityBarChart</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#Error">Error</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Hello">Hello</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#PieChartScore">PieChartScore</a></li><li><a href="global.html#RadarChartPerf">RadarChartPerf</a></li><li><a href="global.html#SessionsLineChart">SessionsLineChart</a></li><li><a href="global.html#UseAxios">UseAxios</a></li><li><a href="global.html#UserCounts">UserCounts</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Aug 17 2022 10:09:18 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

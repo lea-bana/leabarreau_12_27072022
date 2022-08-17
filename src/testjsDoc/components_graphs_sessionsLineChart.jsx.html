@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/graphs/sessionsLineChart.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/graphs/sessionsLineChart.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { LineChart, Line, XAxis, YAxis, Tooltip, Rectangle } from "recharts";
+import React, { useEffect, useState } from "react";
+import "../../style/sessionsLineChart.css";
+import PropTypes from "prop-types";
+
+/**
+ * Using a useEffect hook to set the state of averageTime to the data to display in the
+ * LineChart.
+ * @returns The LineChart component
+ * @param {object} datas
+ * @param {string} initialDayWeek
+ * @param {object} averageTime
+ * @param {object} data
+ * @param {object} payload
+ * @param {object} props
+ * @component SessionsLineChart
+ *
+ */
+function SessionsLineChart({ datas }) {
+  const initialDayWeek = ["L", "M", "M", "J", "V", "S", "D"];
+  const [averageTime, setAverageTime] = useState([]);
+  useEffect(() => {
+    console.log("This is datas", datas);
+    if (datas?.sessions) {
+      setAverageTime(...averageTime, datas.sessions.sessions);
+      console.log("this is averagetime after setter", averageTime);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [datas]);
+  const data = averageTime.map((element) => {
+    return {
+      initialDayWeek: initialDayWeek[element.day - 1],
+      sessionLength: element.sessionLength,
+    };
+  });
+  console.log("Heyhey", data);
+
+  /**
+   * Function that customizes the tooltip component with the sessionlength value.
+   * @param {Boolean} active if active
+   * @param {Array} payload [0] (Number) sessionLength value
+   * @returns {reactElement} Component if active
+   */
+
+  function CustomTooltip({ active, payload }) {
+    if (active &amp;&amp; payload) {
+      return (
+        &lt;div className="custom-tooltip white">
+          &lt;p className="value black">{`${payload[0].value} min`}&lt;/p>
+        &lt;/div>
+      );
+    }
+  }
+
+  /**
+   * Function that customizes the cursor background component.
+   * @param {object} props
+   * @returns {reactElement} if active
+   */
+
+  function CustomCursor(props) {
+    if (props) {
+      const { points, width, height } = props;
+      const { x, y } = points[0];
+      return (
+        &lt;Rectangle
+          fill={"#00000033"}
+          x={x}
+          y={y}
+          width={width}
+          height={height * 2}
+        />
+      );
+    }
+  }
+
+  return (
+    &lt;div className="line-chart-section">
+      &lt;h2 className="title-line-chart">Durée moyenne des sessions&lt;/h2>
+
+      &lt;LineChart
+        width={260}
+        height={280}
+        data={data}
+        margin={{
+          right: 5,
+          left: 5,
+          bottom: 5,
+        }}
+      >
+        &lt;XAxis
+          dataKey="initialDayWeek"
+          tickLine={false}
+          axisLine={false}
+          tickMargin={0}
+          stroke="rgba(255, 255, 255, 0.5)"
+          padding={{ left: 5, right: 5 }}
+          fontSize={14}
+          fontWeight={400}
+        />
+        &lt;YAxis hide="true" domain={["dataMin-10", "dataMax+20"]} />
+        &lt;Tooltip content={&lt;CustomTooltip />} cursor={&lt;CustomCursor />} />
+        &lt;Line
+          type="monotone"
+          dataKey="sessionLength"
+          stroke="rgba(255, 255, 255, 0.6)"
+          strokeWidth={1.5}
+          dot={false}
+          activeDot={{
+            stroke: "rgba(255, 255, 255, 0.2)",
+            strokeWidth: 5,
+            r: 5,
+          }}
+        />
+      &lt;/LineChart>
+    &lt;/div>
+  );
+}
+
+export default SessionsLineChart;
+
+SessionsLineChart.propTypes = {
+  datas: PropTypes.shape({
+    session: PropTypes.shape({
+      sessions: PropTypes.any.isRequired,
+      initialDayWeek: PropTypes.string,
+      sessionLength: PropTypes.number,
+    }),
+  }),
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#ActivityBarChart">ActivityBarChart</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#Error">Error</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Hello">Hello</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#PieChartScore">PieChartScore</a></li><li><a href="global.html#RadarChartPerf">RadarChartPerf</a></li><li><a href="global.html#SessionsLineChart">SessionsLineChart</a></li><li><a href="global.html#UseAxios">UseAxios</a></li><li><a href="global.html#UserCounts">UserCounts</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Aug 17 2022 10:09:18 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
